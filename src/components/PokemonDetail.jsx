@@ -1,0 +1,40 @@
+import classes from "./PokemonDetail.module.css";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+
+
+function PokemonDetails({ match }) {
+    const [pokemon, setPokemon] = useState(null);
+  
+    useEffect(() => {
+      async function fetchData() {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${match.params.id}`
+        );
+        const data = await response.json();
+        setPokemon(data);
+      }
+  
+      fetchData();
+    }, [match.params.id]);
+  
+    if (!pokemon) {
+      return <div>Loading...</div>;
+    }
+  
+    return (
+      <div className={classes.pokemonDatas}>
+        <h2>{pokemon.name}</h2>
+        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        <p>Height: {pokemon.height}</p>
+        <p>Weight: {pokemon.weight}</p>
+        <Link to={`/`}>
+            <button>Back</button>
+          </Link>
+        </div>
+    );
+  }
+  
+
+export default PokemonDetails;

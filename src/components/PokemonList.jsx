@@ -45,7 +45,6 @@ function PokemonList() {
                 <li key={index}>{type.type.name}</li>
               ))}
             </ul>
-            {/* <p>Weight: {pokemon.weight}</p> */}
             <Link to={`/pokemon/${pokemon.id}`}>
               <button>Select</button>
             </Link>

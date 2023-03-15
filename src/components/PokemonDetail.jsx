@@ -31,12 +31,7 @@ function PokemonDetails({ match }) {
         <p>Hp: {pokemon.stats[0].base_stat}</p>
         <p>Attack: {pokemon.stats[1].base_stat}</p>
         <p>Defense: {pokemon.stats[2].base_stat}</p>
-        {/* <p>Special Attacks:</p>
-        <ul>
-          {pokemon.moves.map((move, index) => (
-            <li key={index}>{move.move.name}</li>
-          ))}
-        </ul> */}
+      
       </div>
       <Link className={classes.link} to={`/`}>
         <button>Back</button>

@@ -39,9 +39,13 @@ function PokemonList() {
           <div key={pokemon.id} className={classes.pokemonDatas}>
             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             <h2>{pokemon.name}</h2>
-            <p>Height: {pokemon.height}</p>
-            <p>Weight: {pokemon.weight}</p>
-
+            <p>Types:</p>
+            <ul>
+              {pokemon.types.map((type, index) => (
+                <li key={index}>{type.type.name}</li>
+              ))}
+            </ul>
+            {/* <p>Weight: {pokemon.weight}</p> */}
             <Link to={`/pokemon/${pokemon.id}`}>
               <button>Select</button>
             </Link>
@@ -49,10 +53,18 @@ function PokemonList() {
         ))}
       </div>
       <div className={classes.pagination}>
-        <button className={classes.paginationButton} onClick={handlePrevPage} disabled={page === 1}>
+        <button
+          className={classes.paginationButton}
+          onClick={handlePrevPage}
+          disabled={page === 1}
+        >
           Prev
         </button>
-        <button className={classes.paginationButton} onClick={handleNextPage} disabled={pokemons.length < 18}>
+        <button
+          className={classes.paginationButton}
+          onClick={handleNextPage}
+          disabled={pokemons.length < 18}
+        >
           Next
         </button>
       </div>
